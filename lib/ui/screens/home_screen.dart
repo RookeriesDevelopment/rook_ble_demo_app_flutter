@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rook_ble_demo/ui/screens/screens.dart';
+import 'package:rook_ble_demo/ui/widgets/rook_auth_status.dart';
 
 const String homeScreenRoute = '/';
 
@@ -16,6 +17,8 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              RookAuthStatus(),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => navigate(context, heartRateScannerScreenRoute),
                 child: const Text('Heart rate devices'),

@@ -13,6 +13,7 @@ dependencies:
   permission_handler: ">=9.0.0 <10.0.0"
   device_info_plus: ">=6.0.0 <7.0.0"
   logging: ">=1.0.0 <2.0.0"
+  rook_auth: "^0.0.1"
 
 dev_dependencies:
   flutter_test:
