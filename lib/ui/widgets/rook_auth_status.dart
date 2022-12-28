@@ -42,7 +42,7 @@ class _RookAuthStatusState extends State<RookAuthStatus> {
                       const SizedBox(width: 10),
                       Expanded(
                         child: Text(
-                          'Authorized until: ${authorizedUntil?.toIso8601String()} (UTC)',
+                          'Authorized until: ${authorizedUntil?.toLocal().toIso8601String()} (Local)',
                         ),
                       ),
                     ],
