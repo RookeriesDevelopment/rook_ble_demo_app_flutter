@@ -3,17 +3,17 @@ import 'package:rook_auth/provider/authorization_provider.dart';
 import 'package:rook_ble_demo/secrets.dart';
 
 class RookAuthStatus extends StatefulWidget {
-  final AuthorizationProvider provider = AuthorizationProvider(
-    Secrets.rookApiUrl,
-  );
-
-  RookAuthStatus({Key? key}) : super(key: key);
+  const RookAuthStatus({Key? key}) : super(key: key);
 
   @override
   State<RookAuthStatus> createState() => _RookAuthStatusState();
 }
 
 class _RookAuthStatusState extends State<RookAuthStatus> {
+  final AuthorizationProvider provider = AuthorizationProvider(
+    Secrets.rookApiUrl,
+  );
+
   bool loading = false;
   bool authorized = false;
   DateTime? authorizedUntil;
@@ -37,12 +37,13 @@ class _RookAuthStatusState extends State<RookAuthStatus> {
               children: [
                 if (authorized)
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Icon(Icons.verified_rounded),
                       const SizedBox(width: 10),
-                      Text(
-                        'Authorized until: ${authorizedUntil?.toIso8601String().substring(0, 10)} (UTC)',
+                      Expanded(
+                        child: Text(
+                          'Authorized until: ${authorizedUntil?.toIso8601String()} (UTC)',
+                        ),
                       ),
                     ],
                   ),
