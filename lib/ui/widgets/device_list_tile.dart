@@ -3,7 +3,7 @@ import 'package:rook_ble/rook_ble.dart';
 
 class DeviceListTile extends StatelessWidget {
   final BLEDevice device;
-  final void Function() onClick;
+  final Function() onClick;
 
   const DeviceListTile({
     Key? key,
