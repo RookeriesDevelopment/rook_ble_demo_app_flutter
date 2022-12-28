@@ -10,7 +10,7 @@ class AppRouter {
         );
       case heartRateScannerScreenRoute:
         return MaterialPageRoute(
-          builder: (context) => const HeartRateScannerScreen(),
+          builder: (context) => HeartRateScannerScreen(),
         );
       case heartRatePlaygroundScreenRoute:
         return MaterialPageRoute(

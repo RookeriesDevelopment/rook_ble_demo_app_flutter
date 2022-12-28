@@ -63,7 +63,7 @@ class _RookAuthStatusState extends State<RookAuthStatus> {
     setState(() => loading = true);
 
     try {
-      final result = await widget.provider.getAuthorization(
+      final result = await provider.getAuthorization(
         Secrets.rookClientUUID,
       );
 
