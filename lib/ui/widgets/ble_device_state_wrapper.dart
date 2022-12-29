@@ -64,7 +64,7 @@ class _BLEDeviceStateWrapperState<T extends BLEDevice>
                   if (!data.willReconnect)
                     ElevatedButton(
                       onPressed: () => widget.connect(widget.device),
-                      child: Text('Connect again  to ${widget.device.name}'),
+                      child: Text('Connect again to ${widget.device.name}'),
                     ),
                 ],
               );
