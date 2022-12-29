@@ -18,7 +18,7 @@ class LastUsedDevice<T extends BLEDevice> extends StatefulWidget {
   State<LastUsedDevice> createState() => _LastUsedDeviceState<T>();
 }
 
-class _LastUsedDeviceState<T extends BLEDevice> extends State<LastUsedDevice> {
+class _LastUsedDeviceState<T extends BLEDevice> extends State<LastUsedDevice<T>> {
   bool loading = false;
   T? lastUsedDevice;
   String? error;
@@ -68,7 +68,7 @@ class _LastUsedDeviceState<T extends BLEDevice> extends State<LastUsedDevice> {
 
       setState(() {
         loading = false;
-        lastUsedDevice = device as T;
+        lastUsedDevice = device;
         error = null;
       });
     } catch (e) {
