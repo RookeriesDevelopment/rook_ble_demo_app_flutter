@@ -15,15 +15,43 @@ class HeartRateScannerScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Scanner')),
       body: Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: BLEStateWrapper(
           state: manager.state,
           init: manager.init,
           requestEnableBluetooth: manager.requestEnableBluetooth,
           requestEnableLocation: manager.requestEnableLocation,
-          child: Container(),
+          child: Column(
+            children: [
+              Expanded(
+                child: DevicesList<BLEHeartRateDevice>(
+                  discoveredDevices: manager.discoveredDevices,
+                  onClick: (device) => selectDevice(device),
+                ),
+              ),
+              const SizedBox(height: 20),
+              ScannerToggle(
+                isDiscovering: manager.isDiscovering,
+                startDevicesDiscovery: manager.startDevicesDiscovery,
+                stopDevicesDiscovery: manager.stopDevicesDiscovery,
+              ),
+              const SizedBox(height: 20),
+              LastUsedDevice<BLEHeartRateDevice>(
+                retrieve: manager.getStoredDevice,
+                delete: manager.deleteStoredDevice,
+                onClick: (device) => selectDevice(device),
+              )
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  void selectDevice(BLEHeartRateDevice device) async {
+    await manager.stopDevicesDiscovery();
+    await manager.storeDevice(device);
+
+    // TODO: navigate
   }
 }
