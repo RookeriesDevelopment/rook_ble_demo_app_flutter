@@ -29,7 +29,7 @@ class _ReconnectToggleState extends State<ReconnectToggle> {
       secondary: Icon(
         isEnabled ? Icons.power_rounded : Icons.power_off_rounded,
       ),
-      title: const Text('Device reconnection'),
+      title: Text('Reconnection ${isEnabled ? 'enabled' : 'disabled'}'),
       value: isEnabled,
       onChanged: (value) {
         widget.toggle(!isEnabled);
