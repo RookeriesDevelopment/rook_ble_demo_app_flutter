@@ -22,6 +22,7 @@ class HeartRateScannerScreen extends StatelessWidget {
         child: BLEStateWrapper(
           state: manager.state,
           init: manager.init,
+          dispose: manager.dispose,
           requestEnableBluetooth: manager.requestEnableBluetooth,
           requestEnableLocation: manager.requestEnableLocation,
           child: Column(
