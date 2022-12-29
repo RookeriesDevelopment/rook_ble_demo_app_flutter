@@ -14,7 +14,9 @@ class AppRouter {
         );
       case heartRatePlaygroundScreenRoute:
         return MaterialPageRoute(
-          builder: (context) => const HeartRatePlaygroundScreen(),
+          builder: (context) => HeartRatePlaygroundScreen(
+            args: settings.arguments as HeartRatePlaygroundScreenArgs,
+          ),
         );
       default:
         return null;

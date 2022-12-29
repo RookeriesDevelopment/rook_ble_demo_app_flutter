@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 import 'package:rook_ble/rook_ble.dart';
+import 'package:rook_ble_demo/ui/screens/screens.dart';
 import 'package:rook_ble_demo/ui/widgets/widgets.dart';
 
 const String heartRateScannerScreenRoute = '/hr/scanner';
 
 class HeartRateScannerScreen extends StatelessWidget {
+  final Logger logger = Logger('HeartRateScannerScreen');
   final BLEHeartRateManager manager = BLEHeartRateManager();
 
   HeartRateScannerScreen({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class HeartRateScannerScreen extends StatelessWidget {
               Expanded(
                 child: DevicesList<BLEHeartRateDevice>(
                   discoveredDevices: manager.discoveredDevices,
-                  onClick: (device) => selectDevice(device),
+                  onClick: (device) => selectDevice(context, device),
                 ),
               ),
               const SizedBox(height: 20),
@@ -39,8 +42,8 @@ class HeartRateScannerScreen extends StatelessWidget {
               LastUsedDevice<BLEHeartRateDevice>(
                 retrieve: manager.getStoredDevice,
                 delete: manager.deleteStoredDevice,
-                onClick: (device) => selectDevice(device),
-              )
+                onClick: (device) => selectDevice(context, device),
+              ),
             ],
           ),
         ),
@@ -48,10 +51,18 @@ class HeartRateScannerScreen extends StatelessWidget {
     );
   }
 
-  void selectDevice(BLEHeartRateDevice device) async {
-    await manager.stopDevicesDiscovery();
-    await manager.storeDevice(device);
-
-    // TODO: navigate
+  void selectDevice(BuildContext context, BLEHeartRateDevice device) {
+    manager.stopDevicesDiscovery().then((success) {
+      manager.storeDevice(device).then((success) {
+        Navigator.of(context).pushNamed(
+          heartRatePlaygroundScreenRoute,
+          arguments: HeartRatePlaygroundScreenArgs(device: device),
+        );
+      }).catchError((error) {
+        logger.severe('storeDevice error: $error');
+      });
+    }).catchError((error) {
+      logger.severe('stopDevicesDiscovery error: $error');
+    });
   }
 }
