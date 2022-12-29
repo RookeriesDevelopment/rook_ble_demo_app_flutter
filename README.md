@@ -1,16 +1,17 @@
-# rook_ble_demo
+# rook ble demo
 
-Demo app of rook_ble package
+Demo app of [rook_ble](https://pub.dev/packages/rook_ble) package
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. In the lib folder create a secrets.dart file with a Secrets class and add the following
+   constants:
 
-A few resources to get you started if this is your first Flutter project:
+```dart
+class Secrets {
+  static const String rookApiUrl = 'YOUR_API_URL';
+  static const String rookClientUUID = 'YOUR_CLIENT_UUID';
+}
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Run `flutter pub get`
