@@ -55,7 +55,7 @@ class HeartRateScannerScreen extends StatelessWidget {
   void selectDevice(BuildContext context, BLEHeartRateDevice device) {
     manager.stopDevicesDiscovery().then((success) {
       manager.storeDevice(device).then((success) {
-        Navigator.of(context).pushNamed(
+        Navigator.of(context).pushReplacementNamed(
           heartRatePlaygroundScreenRoute,
           arguments: HeartRatePlaygroundScreenArgs(device: device),
         );
