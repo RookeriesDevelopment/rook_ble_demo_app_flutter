@@ -5,6 +5,7 @@ import 'package:rook_ble_demo/utils/permissions_handler.dart';
 class BLEStateWrapper extends StatefulWidget {
   final Stream<BLEState> state;
   final Function() init;
+  final Function() dispose;
   final Function() requestEnableBluetooth;
   final Function() requestEnableLocation;
   final Widget child;
@@ -13,6 +14,7 @@ class BLEStateWrapper extends StatefulWidget {
     Key? key,
     required this.state,
     required this.init,
+    required this.dispose,
     required this.requestEnableBluetooth,
     required this.requestEnableLocation,
     required this.child,
@@ -92,5 +94,11 @@ class _BLEStateWrapperState extends State<BLEStateWrapper> {
         ElevatedButton(onPressed: action, child: Text(label)),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    widget.dispose();
+    super.dispose();
   }
 }
