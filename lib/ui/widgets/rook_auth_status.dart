@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rook_auth/provider/authorization_provider.dart';
+import 'package:rook_auth/rook_auth.dart';
 import 'package:rook_ble_demo/secrets.dart';
 
 class RookAuthStatus extends StatefulWidget {
