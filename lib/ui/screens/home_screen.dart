@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              RookAuthStatus(),
+              const RookAuthStatus(),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () => navigate(context, heartRateScannerScreenRoute),
