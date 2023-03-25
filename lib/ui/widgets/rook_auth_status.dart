@@ -11,7 +11,7 @@ class RookAuthStatus extends StatefulWidget {
 
 class _RookAuthStatusState extends State<RookAuthStatus> {
   final AuthorizationProvider provider = AuthorizationProvider(
-    Secrets.rookApiUrl,
+    Secrets.rookAuthUrl,
   );
 
   bool loading = false;
@@ -64,7 +64,7 @@ class _RookAuthStatusState extends State<RookAuthStatus> {
 
     try {
       final result = await provider.getAuthorization(
-        Secrets.rookClientUUID,
+        Secrets.clientUUID,
       );
 
       setState(() {

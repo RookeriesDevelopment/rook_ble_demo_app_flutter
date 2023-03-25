@@ -9,8 +9,8 @@ Demo app of [rook_ble](https://pub.dev/packages/rook_ble) package
 
 ```dart
 class Secrets {
-  static const String rookApiUrl = 'YOUR_API_URL';
-  static const String rookClientUUID = 'YOUR_CLIENT_UUID';
+   static const String rookAuthUrl = 'rookAuthUrl';
+   static const String clientUUID = 'clientUUID';
 }
 ```
 
